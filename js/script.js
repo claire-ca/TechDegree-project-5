@@ -16,6 +16,7 @@
 
 } )( jQuery );
 
+// Content filtering code adapted from: https://stackoverflow.com/questions/50142654/filter-images-while-typing-based-on-alt-tag
 $("#gallery-search").keyup(function() {
     var val = $.trim(this.value.toLowerCase()); // gets the value in the input field. Trims whitespace from beginning and end of input. I added toLowerCase().
     if (val === "") // if val is empty 
