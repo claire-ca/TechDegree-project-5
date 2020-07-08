@@ -16,13 +16,17 @@
 
 } )( jQuery );
 
-// Content filtering code adapted from: https://stackoverflow.com/questions/50142654/filter-images-while-typing-based-on-alt-tag
-$("#gallery-search").keyup(function() {
-    var val = $.trim(this.value.toLowerCase()); // gets the value in the input field. Trims whitespace from beginning and end of input. I added toLowerCase().
-    if (val === "") // if val is empty 
-        $('a').show(); // show all the a tags
-    else { // otherwise
-        $('a').hide(); // hide all the a tags
-        $('a[title*=' + val + "]").show(); // unless the title attribute contains the characters written in the input field
-    }
+let $images = $('.link-image');
+
+$('#gallery-search').keyup(function(){
+	let $searchInput = $(this).val().toLowerCase();
+
+	$('.link-image').each(function(){
+		let $title = $(this).attr('title').toLowerCase();
+		if($title.indexOf($searchInput) > -1) {
+			$(this).show();
+		} else {
+			$(this).hide();
+		}
+	})
 });
